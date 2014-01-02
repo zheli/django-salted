@@ -34,6 +34,11 @@ def manage_py(command):
     run('{python} {manage} {command}'.format(python=VENV_PATH + "/bin/python",
                                              manage=MANAGE_BIN,
                                              command=command))
+    
+@task
+def syncdb_all():
+    """ Django syncdb command with --all option for south users"""
+    manage_py("syncdb --all --noinput")
 
 @task
 def syncdb():
